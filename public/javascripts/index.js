@@ -13,14 +13,6 @@ window.onload = function() {
       $('body').append(data);
 
       $('.infinite-scroll').jscroll();
-      $('html, body').animate(
-      {
-         //get top-position of target-element and set it as scroll target
-         scrollTop: $('.infinite-scroll').offset().top,
-
-      },600, function() {
-        $('.slideshow, .landing').remove();
-      });
     });
 
     return false;

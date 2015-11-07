@@ -4,7 +4,7 @@ var server = require('../server');
 
 router.get('/', function(req, res, next) {
   result = server(req);
-  res.sendFile(__dirname + '/query.html');
+  res.send(result);
 });
 
 module.exports = router;

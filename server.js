@@ -1,3 +1,22 @@
+var $ = 0;
+(function () {
+  'use strict';
+
+  var env = require('jsdom').env
+    , html = '<html><body><h1>Hello World!</h1><p class="hello">Heya Big World!</body></html>'
+    ;
+
+  // first argument can be html string, filename, or url
+  env(html, function (errors, window) {
+    console.log(errors);
+
+    $ = require('jquery')(window)
+      ;
+
+    console.log($('.hello').text());
+  });
+}());
+
 var url = require('url');
 var mysql = require('mysql');
 var connection = mysql.createConnection({
@@ -15,6 +34,8 @@ var connection = mysql.createConnection({
 // });
 // connection.end();
 
+
+print = console.log.bind(console);
 var results_top = 
 "<section class='results'>" + 
 "<div class='infinite-scroll'>";
@@ -30,6 +51,11 @@ module.exports = function(request){
   var query = url_parts.query; // json file {'param':value}
   var status = query['status'];  
   
+  var search_string = query['search_string'];  
+
+  var a = $("<div class='item'>").append('ITEM');
+  var b = $("<div class='next'>").append($("<a href='/query?query_string=next'>").append('next'));
+  item = a[0].outerHTML + b[0].outerHTML;
   if (status == 'next'){
     return item;
   }

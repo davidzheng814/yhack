@@ -10,22 +10,36 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     <script>
       $(function() {
-        $( "#from" ).datepicker({
+        $( "#from-date" ).datepicker({
           defaultDate: "+1w",
           changeMonth: true,
           numberOfMonths: 1,
+          minDate:0,
           onClose: function( selectedDate ) {
-            $( "#to" ).datepicker( "option", "minDate", selectedDate );
+            $( "#to-date" ).datepicker( "option", "minDate", selectedDate );
           }
         });
-        $( "#to" ).datepicker({
+        $( "#to-date" ).datepicker({
           defaultDate: "+1w",
           changeMonth: true,
           numberOfMonths: 1,
+          minDate:0,
           onClose: function( selectedDate ) {
             // $( "#from" ).datepicker( "option", "maxDate", selectedDate );
           }
         });
+      });
+      $(function() {
+        $( "#slider-range-min" ).slider({
+          range: "min",
+          value: 300,
+          min: 0,
+          max: 2000,
+          slide: function( event, ui ) {
+            $( "#amount" ).html( ui.value );
+          }
+        });
+        $( "#amount" ).html( $( "#slider-range-min" ).slider( "value" ) );
       });
     </script>
   </head>
@@ -44,10 +58,16 @@
         <h1 class="landing-header">Find your perfect getaway</h1>
         <div class="query-container">
           <form class="query-form">
-            <input type="text" id="search-string" name="search-string" placeholder="What are you looking for?" required/>
-            <input type="text" id="from" name="from" placeholder="From" required/>
-            <input type="text" id="to" name="to" placeholder="To" required/>
-            <button id="submit" class="button-blue" type="submit">Submit</button>
+            <input class="field" type="text" style="width:70%" id="search-string" name="search-string" placeholder="What are you looking for?"/>
+            <button id="submit" style="width:23%" class="button-blue" type="submit">Search</button>
+            <br>
+            <input class="field" type="text" style="width:35%" id="from-date" name="from" placeholder="Earliest Date"/>
+            <input class="field" type="text" style="width:35%" id="to-date" name="to" placeholder="Latest Date"/>
+            <input class="field" type="text" style="width:20%" id="origin" name="origin" placeholder="Flying from" />
+            <!-- <label for="amount" style="margin-top:15px;text-align:left">Maximum price:</label>
+            <input type="text" id="amount" style="text-align:left;margin-top:15px" readonly style="border:0; color:#f6931f; font-weight:bold;"> -->
+            <div style="outline:none;text-align:left;margin-top:5px">Price Range: $0 - $<span id="amount">37</span></div>
+            <div id="slider-range-min" style="outline:none;width:90%;margin-top:5px"></div>
           </form>
         </div>
 

@@ -1,2 +1,15 @@
 body {
 }
+
+.item {
+  margin-top: 300px;
+  margin-bottom: 300px;
+}
+
+.landing{
+  text-align: center;
+  height: 100%;
+  margin-bottom:50%;
+}
+
+#preload-01 { background: url('../images/loading.gif') no-repeat -9999px -9999px; }

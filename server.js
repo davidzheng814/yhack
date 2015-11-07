@@ -27,7 +27,6 @@ fs.exists(fileName, function(exists) {
 print ('creating $');
 
 var $ = 0;
-
 setTimeout(function () {
   'use strict';
 
@@ -37,8 +36,9 @@ setTimeout(function () {
     $ = require('jquery')(window);
 
     console.log($('.flight_data').text());
+    // console.log($('.item').text());
   });
-}, 100);
+}, 1000);
 
 var url = require('url');
 var mysql = require('mysql');
@@ -101,14 +101,17 @@ module.exports = function(request, callback) {
     var ret = $('<div>');
     while (idx < start + len && idx < rows.length) {
       var row = rows[idx];
-      var el = $("<div class='item'>");
+      // var el = $("<div class='item'>");
+      $('.origin-destination').html(row.Origin);
+      var el = $('.item').clone();
+      // print(el);
 
       // el holds a flight. 
       // TODO: make it pretty
-      originDestination = $("<div class='origin-destination'>").append("Boston (BOS) to New York City (JFK)");
-      el.append(originDestination);
+      // originDestination = $("<div class='origin-destination'>").append("Boston (BOS) to New York City (JFK)");
+      // el.append(originDestination);
 
-      el.append(JSON.stringify(row));
+      // el.append(JSON.stringify(row));
 
       ret.append(el);
       ++idx;
@@ -119,8 +122,10 @@ module.exports = function(request, callback) {
     sql_queries[''+cnt] = sql_query;
     nextParams = 'status=next&id='+cnt+'&start='+idx;
 
-    var b = $("<div class='next'>").append($("<a href='/query?" + nextParams + "'>").append('next'));
-    ret.append(b);
+    if (idx < rows.length) {
+      var b = $("<div class='next'>").append($("<a href='/query?" + nextParams + "'>").append('next'));
+      ret.append(b);
+    }
     if (start == 0) {
       return results_top+ret.html()+results_bot;
     } else {

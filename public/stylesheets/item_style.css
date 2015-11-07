@@ -8,11 +8,10 @@ body {
   margin-right: 10px;
   font-family: Avenir Next;
   border-radius: 25px;
-  background-image: url("images/vacation.jpg");
+  background-image: url("/images/vacation.jpg");
   background-size: cover;
   padding: 30px;
   width: 80%;
-  float: right;
   color: #33334C;
 }
 .item .origin-destination {

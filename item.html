@@ -8,7 +8,7 @@
     window.onload = function() {
       $(".item").click(function() {
         $(".specifics", this).toggle("slow");
-        $(".dest_type", this).toggle("slow");
+        $(".dest-types", this).toggle("slow");
       });
     }
     </script>
@@ -16,29 +16,31 @@
   </head>
   <body>
     <div class="item"> <!--item 1-->
-      <div class = "origin_destination"> Boston (BOS) to New York City (JFK)</div>
-      <div class = "flight_cost"> Flights starting from $300 </div>
-      <div class = "dest_type" hidden> Destination Types </div>
-      <div class = "specifics" hidden>
-        <div class = "flight_data"> Date 11/10/15, Price $300 </div>
-        <div class = "dest_types"><ul>
-          <li>Beach</li>
-          <li>Family</li>
-          <li>Nightlife</li>
-          <ul></div>
-        <div class = "flight_data"> Date 11/14/15, Price $340 </div>
-        <div class = "flight_data"> Date 11/10/15, Price $300 </div>
-        <div class = "flight_data"> Date 11/14/15, Price $340 </div>
-        <div class = "flight_data"> Date 11/10/15, Price $300 </div>
-        <div class = "flight_data"> Date 11/14/15, Price $340 </div>
-      </div>
-    </div>
-     <div class="item"> <!--item 2-->
-      <div class = "origin_destination"> Boston (BOS) to New York City (JFK)</div>
-      <div class = "flight_cost"> Flights starting from $300 </div>
-      <div class = "specifics" hidden>
-        <div class = "flight_data"> Date 11/10/15, Price $300 </div>
-        <div class = "flight_data"> Date 11/14/15, Price $340 </div>
+      <div class="origin-destination"> Boston (BOS) to New York City (JFK)</div>
+      <div class="flight-cost"> Flights starting from $300 </div>
+      <div class="dest-types" hidden> Destination Types </div>
+      <div class="specifics" hidden>
+        <table class="flight-data-table" style="width:100%">
+          <tr>
+            <td style="width:60%"> <!--flight data-->
+              <table>
+                <tr><td><div class="flight-data"> Date 11/10/15 11:37PM, Price $300 </div></td></tr>
+                <tr><td><div class="flight-data"> Date 11/14/15, Price $340 </div></td></tr>
+                <tr><td><div class="flight-data"> Date 11/10/15, Price $300 </div></td></tr>
+                <tr><td><div class="flight-data"> Date 11/14/15, Price $340 </div></td></tr>
+                <tr><td><div class="flight-data"> Date 11/10/15, Price $300 </div></td></tr>
+                <tr><td><div class="flight-data"> Date 11/14/15, Price $340 </div></td></tr>
+              </table>
+            </td>
+            <td style="width:40%; vertical-align:top"> <!--dest types-->
+              <table>
+                <tr><td><div class="dest-type"> Beach </td></tr></div>
+                <tr><td><div class="dest-type"> Exploration </td></tr></div>
+                <tr><td><div class="dest-type"> Family </td></tr></div>
+              </table>
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
   </body>

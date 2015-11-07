@@ -6,6 +6,7 @@ body {
   margin-top: 10px;
   margin-bottom: 10px;
   margin-right: 10px;
+  font-family: Avenir Next;
   border-radius: 25px;
   background-image: url("images/vacation.jpg");
   background-size: cover;
@@ -14,47 +15,38 @@ body {
   float: right;
   color: #33334C;
 }
-.item .origin_destination {
+.item .origin-destination {
 	font-size: 25px;
   font-family: Gill Sans;
 	margin: 10px;
   width: 65%;
   float: left;
 }
-.item .flight_cost {
+.item .flight-cost {
 	margin: 10px;
-  font-family: Avenir Next;
   font-size: 17px;
   width: 40%;
   float: left;
+}
+.item .dest-types {
+  margin: 10px;
+  font-size: 17px;
+  width: 40%;
+  float: right;
 }
 .item .specifics {
 	margin: 10px;
   font-size: 15px;
-  width: 65%;
-  float: left;
-  font-family: Avenir Next;
 }
-.item .specifics .flight_data {
+.item .specifics .flight-data {
   margin: 10px;
-  width: 50%;
   float: left;
 }
-.item .dest_type {
+.item .specifics .dest-type {
   margin: 10px;
-  font-size: 17px;
-  font-family: Avenir Next;
-  width: 40%;
-  float: right;
+  float: left;
 }
-.item .dest_types {
-  margin: 10px;
-  width: 25%;
-  float: right;
-}
-.item
-
-.landing{
+.landing {
   text-align: center;
   height: 100%;
   margin-bottom:50%;

@@ -1,0 +1,22 @@
+origin airport code:
+    [ABQ, ACK, ANC, AUA, AUS, AZS, BDA, BDL, BGI, BOG, BOS, BQN, BTV, BUF, BUR, BWI, CHS, CLE, CLT, CTG, CUN, CUR, DCA, DEN, DFW, DTW, EWR, FLL, GCM, GND, HOU, HPN, HYA, IAD, JAX, JFK, KIN, LAS, LAX, LGA, LGB, LIM, LIR, LRM, MBJ, MCO, MDE, MSY, MVY, NAS, OAK, ORD, ORH, PAP, PBI, PDX, PHL, PHX, PIT, PLS, POP, POS, PSE, PUJ, PVD, PWM, RDU, RIC, RNO, ROC, RSW, SAV, SDQ, SEA, SFO, SJC, SJO, SJU, SLC, SMF, SRQ, STI, STT, STX, SWF, SXM, SYR, TPA, UVF]
+
+destination airport code: 
+    same as above
+
+geographic region id:
+    1 - 22 = 
+    [SF Bay, LA Area, Other Carrib, PR, DR, Colombia, WAS, The South, Mtn West, Desert West, Pac NW, NYC, Upstate, BOS Area, MidWest, NE Islands, PBI, MCO, Gulf, Texas, FLL, ANC]
+
+market group id:
+    1 - 6 = 
+    [California, Caribbean, Mid-Atlantic, Mountain/Desert, Northeast, SouthSW]
+
+destination type id:
+    1 = beach, 2 = exploration, 3 = family, 4 = nightlife, 5 = romance
+
+budget:
+    0 - whatever (flights go 43.2 - 1395.6)
+
+dates:
+    intervals 10/27/15 to 2/29/16

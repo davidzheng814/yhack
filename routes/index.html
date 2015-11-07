@@ -2,23 +2,56 @@
 <html>
   <head>
     <title>JetBlue</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="javascripts/jquery-2.1.4.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
     <script src="javascripts/jquery.jscroll.min.js"></script>
     <script src="javascripts/index.js"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+    <script>
+      $(function() {
+        $( "#from" ).datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 1,
+          onClose: function( selectedDate ) {
+            $( "#to" ).datepicker( "option", "minDate", selectedDate );
+          }
+        });
+        $( "#to" ).datepicker({
+          defaultDate: "+1w",
+          changeMonth: true,
+          numberOfMonths: 1,
+          onClose: function( selectedDate ) {
+            // $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+          }
+        });
+      });
+    </script>
   </head>
 
   <body>
-    <section class='landing'>
-      <div id='preload-01'></div>
-      <form class="query-form">
-        Origin: <input type="text" id="origin"><br>
-        Destination: <input type="text" id="destination"><br>
-        Start Date: <input type="text" id="start-date"><br>
-        End Date: <input type="text" id="end-date"><br>
-        Price Bound: <input type="text" id="price-bound"><br>
-        <input type="submit" value="Submit">
-      </form>
-    </section>
+    <ul class="slideshow">
+            <li><span>Image 01</span></li>
+            <li><span>Image 02</span></li>
+            <li><span>Image 03</span></li>
+            <li><span>Image 04</span></li>
+            <li><span>Image 05</span></li>
+            <li><span>Image 06</span></li>
+    </ul>
+    <div class="container">
+      <section class='landing'>
+        <h1 class="landing-header">Find your perfect getaway</h1>
+        <div class="query-container">
+          <form class="query-form">
+            <input type="text" id="search-string" name="search-string" placeholder="What are you looking for?" required/>
+            <input type="text" id="from" name="from" placeholder="From" required/>
+            <input type="text" id="to" name="to" placeholder="To" required/>
+            <button id="submit" class="button-blue" type="submit">Submit</button>
+          </form>
+        </div>
+
+      </section>
+    </div>
   </body>
 </html>

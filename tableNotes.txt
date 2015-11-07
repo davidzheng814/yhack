@@ -1,0 +1,4 @@
+database exists on david's comptuer
+table: flights.data
+create command: create table data(Origin varchar(5),Destination varchar(5),FlightDate varchar(30),DollarFare float,DollarTax float,DollarTotal float,IsDomesticRoute int,MarketID int,GeographicRegionId int,Type1 int,Type2 int,Type3 int,Type4 int,Type5 int);
+load command: load data local infile '~/Documents/Code/yhack/FlightData.csv' into table data fields terminated by ',';

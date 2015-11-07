@@ -20,6 +20,7 @@ body {
 	margin: 10px;
   width: 65%;
   float: left;
+  height: 10px;
 }
 .item .flight-cost {
 	margin: 10px;

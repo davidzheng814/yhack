@@ -46,8 +46,9 @@ input:-webkit-autofill {
 
 .item {
   width: 100vw;
-  /*height: 30vh;*/
+  min-height: 30vh;
   background-color: red;
+  clear: both;
 }
 
 .landing{

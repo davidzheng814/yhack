@@ -105,12 +105,8 @@ module.exports = function(request, callback) {
       // var el = $("<div class='item'>");
       $('.origin-destination').html(rep_row.Origin + " to " + rep_row.Destination);
       $('.flight-cost').html("Starting at $" + rep_row.DollarTotal.toString());
-      $(".item").click(function() {
-        console.log("clicked");
-        $(".specifics", this).toggle("slow");
-        $(".dest-types", this).toggle("slow");
-      });
       var el = $('.item').clone();
+      el.addClass('need-listener');
       ret.append(el);
       ++idx;
     }

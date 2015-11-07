@@ -15,12 +15,14 @@ window.onload = function() {
     $.get('/query?'+query_string, function(data) {
       $('body').append(data);
 
-      $('.infinite-scroll').jscroll({callback:function() {
-        $(".item").click(function() {
+      $('.infinite-scroll').jscroll({callback:function(el) {
+        console.log('added ', el);
+        $(".need-listener").click(function() {
           console.log("clicked");
           $(".specifics", this).toggle("slow");
           $(".dest-types", this).toggle("slow");
         });
+        $(".need-listener").removeClass('need-listener');
       } });
 
       $('html, body').animate(

@@ -1,0 +1,33 @@
+body {
+  
+}
+
+.item {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  border-radius: 25px;
+  background-image: url("images/vacation.jpg");
+  background-size: cover;
+  padding: 30px;
+}
+.item .origin_destination {
+	font-size: 25px;
+	margin: 10px
+}
+.item .flight_cost {
+	margin: 10px;
+}
+.item .specifics {
+	margin: 10px;
+}
+.item .specifics .flight_data {
+	margin: 10px;
+}
+
+.landing{
+  text-align: center;
+  height: 100%;
+  margin-bottom:50%;
+}
+
+#preload-01 { background: url('../images/loading.gif') no-repeat -9999px -9999px; }

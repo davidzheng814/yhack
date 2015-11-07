@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <title>JetBlue</title>
+    <script src="public/javascripts/jquery-2.1.4.min.js"></script>
+    <script src="public/javascripts/jquery.jscroll.min.js"></script>
+    <script>
+    window.onload = function() {
+      $(".item").click(function() {
+        $(".specifics").toggle("slow");
+      });
+    }
+    </script>
+    <link rel="stylesheet" type="text/css" href="item_style.css">
+  </head>
+  <body>
+    <div class="item">
+      <div class = "origin_destination"> Boston (BOS) to New York City (JFK)</div>
+      <div class = "flight_cost"> Flights starting from $300 </div>
+
+      <div class = "specifics" hidden>
+        <div class = "flight_data"> Date 11/10/15, Price $300 </div>
+        <div class = "flight_data"> Date 11/14/15, Price $340 </div>
+      </div>
+    </div>
+  </body>
+</html>

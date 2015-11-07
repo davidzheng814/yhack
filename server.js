@@ -1,22 +1,44 @@
 // set up dummy html env to use jquery in
 // we only actually use $ to create html elements programmatically
+
+print = console.log.bind(console);
+var fs = require("fs");
+var fileName = "item.html";
+
+var sandbox_html = '<html><body><h1>Hello World!</h1><p class="hello">Heya Big World!</body></html>';
+
+fs.exists(fileName, function(exists) {
+  if (exists) {
+    fs.stat(fileName, function(error, stats) {
+      fs.open(fileName, "r", function(error, fd) {
+        var buffer = new Buffer(stats.size);
+
+        fs.read(fd, buffer, 0, buffer.length, null, function(error, bytesRead, buffer) {
+          var data = buffer.toString("utf8", 0, buffer.length);
+
+          sandbox_html = data;
+          fs.close(fd);
+        });
+      });
+    });
+  }
+});
+
+print ('creating $');
+
 var $ = 0;
-(function () {
+
+setTimeout(function () {
   'use strict';
 
   var env = require('jsdom').env;
-  var html = '<html><body><h1>Hello World!</h1><p class="hello">Heya Big World!</body></html>';
-
   // first argument can be html string, filename, or url
-  env(html, function (errors, window) {
-    console.log(errors);
+  env(sandbox_html, function (errors, window) {
+    $ = require('jquery')(window);
 
-    $ = require('jquery')(window)
-      ;
-
-    console.log($('.hello').text());
+    console.log($('.flight_data').text());
   });
-}());
+}, 100);
 
 var url = require('url');
 var mysql = require('mysql');
@@ -27,11 +49,14 @@ var connection = mysql.createConnection({
   password : '' // TODO: make this read from config
 });
 
+try {
 connection.connect();
 // connection.end();
+} catch(e) {
+  print('cannot connect to server');
+}
 
 
-print = console.log.bind(console);
 var results_top = 
 "<section class='results'>" + 
 "<div class='infinite-scroll'>";
@@ -109,6 +134,13 @@ module.exports = function(request, callback) {
   } else {
     connection.query(sql_query, function(err, rows, fields) {
       if (err) throw err;
+
+      // sort rows
+      rows.sort(function(a, b) {
+        // return 1 if flight a should go before b
+        // return 0 otherwise
+        return a.DollarTotal < b.DollarTotal;
+      });
 
       // TODO: concurrency = lol
       prev_query = sql_query;

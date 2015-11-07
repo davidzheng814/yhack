@@ -1,8 +1,14 @@
 window.onload = function() {
   $('.query-form').on('submit', function () {
-    var search_string = $('#search-string').val();
+    text_fields = ['origin', 'destination', 'start-date', 'end-date', 'price-bound'];
+    var query_string = "";
+    for (item of text_fields) {
+      query_string += item + '=' + $('#'+item).val() + '&';
+    }
 
-    query_string = 'search_string='+search_string;
+    query_string += 'status=initial&';
+    console.log(query_string);
+
     $.get('/query?'+query_string, function(data) {
       $('body').append(data);
 

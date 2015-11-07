@@ -23,15 +23,14 @@ var results_bot =
 "</div>" + 
 "</section>";
 
-var item = "<div class='item'> ITEM</div> <div class='next'><a href='/query?query_string=next'>next</a></div>";
+var item = "<div class='item'> ITEM</div> <div class='next'><a href='/query?status=next'>next</a></div>";
 
 module.exports = function(request){
   var url_parts = url.parse(request.url, true);
   var query = url_parts.query; // json file {'param':value}
-  var search_string = query['search_string'];  
-
-  if (search_string == 'next'){
-    console.log('hi');
+  var status = query['status'];  
+  
+  if (status == 'next'){
     return item;
   }
 

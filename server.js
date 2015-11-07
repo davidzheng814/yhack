@@ -1,3 +1,5 @@
+// set up dummy html env to use jquery in
+// we only actually use $ to create html elements programmatically
 var $ = 0;
 (function () {
   'use strict';
@@ -26,7 +28,6 @@ var connection = mysql.createConnection({
   password : '' // TODO: make this read from config
 });
 
-// ***TO MAKE A QUERY***
 connection.connect();
 // connection.end();
 
@@ -40,7 +41,7 @@ var results_bot =
 "</div>" + 
 "</section>";
 
-// number of flights scrolled into view per scroll
+// lenn: number of flights scrolled into view per scroll
 var len = 3; 
 
 // caching-ish stuff
@@ -102,7 +103,7 @@ module.exports = function(request, callback) {
   }
 
   if (prev_query == sql_query) {
-    callback(renderFlig, lenhts(prev_result, start));
+    callback(renderFlights(prev_result, start, len));
   } else {
     connection.query(sql_query, function(err, rows, fields) {
       if (err) throw err;

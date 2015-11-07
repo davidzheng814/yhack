@@ -3,8 +3,10 @@ window.onload = function() {
     text_fields = ['search-string', 'from-date', 'to-date', 'origin'];
     var query_string = "";
     for (item of text_fields) {
+      var val = $('#'+item).val();
       query_string += item + '=' + $('#'+item).val() + '&';
     }
+
     query_string += 'max-price='+$('#amount').html() + '&';
 
     query_string += 'status=initial&';

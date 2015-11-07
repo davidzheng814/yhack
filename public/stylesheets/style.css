@@ -1,9 +1,22 @@
+#amount {
+  color: green;
+  font-weight:400;
+}
+
 body {
   margin:0px;
 }
 
 .container{
   z-index: 1;
+}
+
+
+.field {
+  line-height: 2.3;
+  font-size:16px;
+  padding:0px;
+  padding-left: 10px;
 }
 
 @keyframes imageAnimation { 
@@ -25,6 +38,10 @@ body {
       transform: scale(1.1);
   }
   100% { opacity: 0 }
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 10000px white inset;
 }
 
 .item {
@@ -50,11 +67,11 @@ body {
   padding-bottom:10px;
 }
 
-.field {
-  line-height: 2.3;
-  font-size:16px;
-  padding:0px;
-  padding-left: 10px;
+.price-label {
+  outline:none;
+  text-align:left;
+  margin-top:5px;
+  font-weight:300;
 }
 
 .query-container{

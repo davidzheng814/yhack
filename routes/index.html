@@ -30,11 +30,81 @@
             // $( "#from" ).datepicker( "option", "maxDate", selectedDate );
           }
         });
+
+        var availableTags = [
+          "ActionScript",
+          "AppleScript",
+          "Asp",
+          "BASIC",
+          "C",
+          "C++",
+          "Clojure",
+          "COBOL",
+          "ColdFusion",
+          "Erlang",
+          "Fortran",
+          "Groovy",
+          "Haskell",
+          "Java",
+          "JavaScript",
+          "Lisp",
+          "Perl",
+          "PHP",
+          "Python",
+          "Ruby",
+          "Scala",
+          "Scheme"
+        ];
+        $( "#origin" ).autocomplete({
+          source: availableTags,
+          autoFocus: true,
+          delay:30,
+          minLength:1,
+        });
+
+        function split( val ) {
+          return val.split( /,\s*/ );
+        }
+        function extractLast( term ) {
+          return split( term ).pop();
+        }
+     
+        $( "#search-string" )
+          // don't navigate away from the field on tab when selecting an item
+          .bind( "keydown", function( event ) {
+            if ( event.keyCode === $.ui.keyCode.TAB &&
+                $( this ).autocomplete( "instance" ).menu.active ) {
+              event.preventDefault();
+            }
+          })
+          .autocomplete({
+            minLength: 0,
+            source: function( request, response ) {
+              // delegate back to autocomplete, but extract the last term
+              response( $.ui.autocomplete.filter(
+                availableTags, extractLast( request.term ) ) );
+            },
+            focus: function() {
+              // prevent value inserted on focus
+              return false;
+            },
+            select: function( event, ui ) {
+              var terms = split( this.value );
+              // remove the current input
+              terms.pop();
+              // add the selected item
+              terms.push( ui.item.value );
+              // add placeholder to get the comma-and-space at the end
+              terms.push( "" );
+              this.value = terms.join( ", " );
+              return false;
+            }
+          });
       });
       $(function() {
         $( "#slider-range-min" ).slider({
           range: "min",
-          value: 300,
+          value: 2000,
           min: 0,
           max: 2000,
           slide: function( event, ui ) {
@@ -63,13 +133,13 @@
             <input class="field" type="text" style="width:70%" id="search-string" name="search-string" placeholder="What are you looking for?"/>
             <button id="submit" style="width:23%" class="button-blue" type="submit">Search</button>
             <br>
-            <input class="field" type="text" style="width:35%" id="from-date" name="from" placeholder="Earliest Date"/>
-            <input class="field" type="text" style="width:35%" id="to-date" name="to" placeholder="Latest Date"/>
+            <input class="field" autocomplete="off" type="text" style="width:35%" id="from-date" name="from" placeholder="Earliest Date"/>
+            <input class="field" autocomplete="off" type="text" style="width:35%" id="to-date" name="to" placeholder="Latest Date"/>
             <input class="field" type="text" style="width:20%" id="origin" name="origin" placeholder="Flying from" />
             <!-- <label for="amount" style="margin-top:15px;text-align:left">Maximum price:</label>
             <input type="text" id="amount" style="text-align:left;margin-top:15px" readonly style="border:0; color:#f6931f; font-weight:bold;"> -->
-            <div style="outline:none;text-align:left;margin-top:5px">Price Range: $0 - $<span id="amount">37</span></div>
-            <div id="slider-range-min" style="outline:none;width:90%;margin-top:5px"></div>
+            <div class="price-label">Price Range: $0 - $<span id="amount">37</span></div>
+            <div id="slider-range-min" style="outline:none;width:97%;margin-top:5px"></div>
           </form>
         </div>
 

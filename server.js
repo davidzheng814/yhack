@@ -95,24 +95,22 @@ module.exports = function(request, callback) {
     start = parseInt(query.start);
   }
 
-  renderFlights = function(rows, start, len) {
+  renderFlights = function(groups, start, len) {
     var idx = start;
     // ret is a temp. container; not actually rendered in the end
     var ret = $('<div>');
-    while (idx < start + len && idx < rows.length) {
-      var row = rows[idx];
+    while (idx < start + len && idx < groups.length) {
+      var group = groups[idx]; // group: represents a bundle of flights with same FROM, DEST.
+      rep_row = group[0]; // representative flight
       // var el = $("<div class='item'>");
-      $('.origin-destination').html(row.Origin);
+      $('.origin-destination').html(rep_row.Origin + " to " + rep_row.Destination);
+      $('.flight-cost').html("Starting at $" + rep_row.DollarTotal.toString());
+      $(".item").click(function() {
+        console.log("clicked");
+        $(".specifics", this).toggle("slow");
+        $(".dest-types", this).toggle("slow");
+      });
       var el = $('.item').clone();
-      // print(el);
-
-      // el holds a flight. 
-      // TODO: make it pretty
-      // originDestination = $("<div class='origin-destination'>").append("Boston (BOS) to New York City (JFK)");
-      // el.append(originDestination);
-
-      // el.append(JSON.stringify(row));
-
       ret.append(el);
       ++idx;
     }
@@ -122,7 +120,7 @@ module.exports = function(request, callback) {
     sql_queries[''+cnt] = sql_query;
     nextParams = 'status=next&id='+cnt+'&start='+idx;
 
-    if (idx < rows.length) {
+    if (idx < groups.length) {
       var b = $("<div class='next'>").append($("<a href='/query?" + nextParams + "'>").append('next'));
       ret.append(b);
     }
@@ -140,16 +138,33 @@ module.exports = function(request, callback) {
     connection.query(sql_query, function(err, rows, fields) {
       if (err) throw err;
 
-      // sort rows
-      rows.sort(function(a, b) {
-        // return 1 if flight a should go before b
-        // return 0 otherwise
-        return a.DollarTotal < b.DollarTotal;
-      });
+      var dict = {};
+      // dict.hi // dict['hi'] dict[x] dict.x = dict['x']
+      for (var row of rows) {
+        var dest = row.Destination;
+        if (dest in dict) {
+          dict[dest].push(row);
+        } else {
+          dict[dest] = [row];
+        }
+      }
+      groups = [];
+      for (var dest in dict) {
+        group = dict[dest];
+        compareFunc = function(a, b) {
+          return a.DollarTotal - b.DollarTotal;
+        }
+        group.sort(compareFunc);
+        groups.push(group);
+        if (group.length > 25) {
+          group.splice(25, group.length - 25);
+        }
+      }
+      console.log(groups);
 
       // TODO: concurrency = lol
       prev_query = sql_query;
-      prev_result = rows;
+      prev_result = groups;
 
       callback(renderFlights(prev_result, start, len));
     });

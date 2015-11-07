@@ -15,7 +15,14 @@ window.onload = function() {
     $.get('/query?'+query_string, function(data) {
       $('body').append(data);
 
-      $('.infinite-scroll').jscroll();
+      $('.infinite-scroll').jscroll({callback:function() {
+        $(".item").click(function() {
+          console.log("clicked");
+          $(".specifics", this).toggle("slow");
+          $(".dest-types", this).toggle("slow");
+        });
+      } });
+
       $('html, body').animate(
       {
          //get top-position of target-element and set it as scroll target

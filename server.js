@@ -178,6 +178,23 @@ module.exports = function(request, callback) {
       for (var i = 1; i <= 4; ++i){
         carousel.append($('<div><img src="images/carousel_images/'+rep_row.Destination+i+'.jpg"/></div>'));
       }
+       
+      $('.hotel-data-table').html("");
+      var url = "http://cors.io/?u=https://www.priceline.com/pws/v0/stay/retail/listing/" + encodeURI(rep_row.Destination) + "?&page-size=5"
+      $.ajax({
+        url: url,
+        type: 'GET',
+        success: function(response) {
+          parsed = jQuery.parseJSON(response)['hotels']
+          for(i = 0; i < 5; i++){
+            var name = parsed[i]['name']
+            var starRating = parsed[i]['starRating']
+            var price = parsed[i]['ratesSummary']['minPrice']
+            var hotelDiv = $("<div class='hotel-data'>").append(name + ": " + starRating + " rating with $" + price + "per night");
+            $('.hotel-data-table').append($('<tr>').append($('<td>').append(flightDiv)));
+          }
+        }
+      });
 
       var el = $('.item').clone();
       el.addClass('need-listener');

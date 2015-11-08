@@ -12,12 +12,13 @@ body {
   border-style: solid;
   border-width: 1px;
   border-color: #33334C;
+  box-shadow: gray;
   background-image: url("/images/vacation.jpg");
   background-size: cover;
   background-position: center top;
   padding: 30px;
-  width: 80%;
-  color: white;
+  width: 70%;
+  color: #33334C;
 }
 .item .origin-destination {
 	font-size: 25px;
@@ -25,6 +26,7 @@ body {
 	margin: 10px;
   width: 65%;
   height: 10px;
+  /*text-shadow: 1px 1px #303049;*/
 }
 .item .flight-cost {
 	margin: 10px;
@@ -34,22 +36,26 @@ body {
 }
 .item .dest-types {
   margin: 10px;
-  font-size: 17px;
-  width: 40%;
-  float: right;
+  font-family: Cochin;
+  font-style: Italic;
+  font-size: 20;
 }
+  
 .item .specifics {
 	margin: 10px;
   font-size: 15px;
 }
-.item .specifics .flight-data {
-  margin: 10px;
+.item .specifics .flight-data-table {
+  width: 100%;
 }
-.item .specifics .dest-type {
-  margin: 10px;
+.item .specifics .flight-data {
+  margin: 5px;
 }
 .landing {
   text-align: center;
+}
+.item .carousel {
+  background-color: blue;
 }
 
 #preload-01 { background: url('../images/loading.gif') no-repeat -9999px -9999px; }

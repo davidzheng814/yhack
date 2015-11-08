@@ -143,16 +143,21 @@ module.exports = function(request, callback) {
       $('.flight-cost').html("Starting at $" + rep_row.DollarTotal.toString());
       $('.flight-data-table').html("");
       for (row of group) {
-        var flightDiv = $("<div class='flight-data'>").append(row.FlightDate + ', $' + row.DollarTotal);
+        var flightDiv = $("<div class='flight-data'>").append('&bull; ' + row.FlightDate + ', $' + row.DollarTotal);
         $('.flight-data-table').append($('<tr>').append($('<td>').append(flightDiv)));
       }
-      $('.dest-type-table').html("");
+      $('.dest-types').html("");
+      var dest_type = '';
       for (type in code_to_dest_type) {
         if (row[type] == 1) {
-          var destDiv = $("<div class='dest-type'>").append(code_to_dest_type[type]);
-          $('.dest-type-table').append($('<tr>').append($('<td>').append(destDiv)));
+          if (dest_type.length > 0) {
+            dest_type += "&nbsp; &nbsp; &diams; &nbsp; &nbsp;";
+          }
+          dest_type += code_to_dest_type[type];
         }
       }
+      $('.dest-types').html(dest_type);
+
       var el = $('.item').clone();
       el.addClass('need-listener');
       ret.append(el);

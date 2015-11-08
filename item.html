@@ -4,37 +4,36 @@
     <title>JetBlue</title>
     <script src="public/javascripts/jquery-2.1.4.min.js"></script>
     <script src="public/javascripts/jquery.jscroll.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="item_style.css">
+    <link rel="stylesheet" type="text/css" href="public/stylesheets/item_style.css">
+    <link rel="stylesheet" type="text/css" href="public/stylesheets/style.css">
   </head>
   <body>
-    <div class="item"> <!--item 1-->
-      <div class="origin-destination"> Boston (BOS) to New York City (JFK)</div>
-      <br>
-      <div class="flight-cost"> Flights starting from $300 </div>
-      <div class="dest-types" hidden> Destination Types </div>
-      <div class="specifics" hidden>
-        <table style="width:100%">
-          <tr>
-            <td style="width:60%"> <!--flight data-->
-              <table class="flight-data-table">
-                <tr><td><div class="flight-data"> Date 11/10/15 11:37PM, Price $300 </div></td></tr>
-                <tr><td><div class="flight-data"> Date 11/14/15, Price $340 </div></td></tr>
-                <tr><td><div class="flight-data"> Date 11/10/15, Price $300 </div></td></tr>
-                <tr><td><div class="flight-data"> Date 11/14/15, Price $340 </div></td></tr>
-                <tr><td><div class="flight-data"> Date 11/10/15, Price $300 </div></td></tr>
-                <tr><td><div class="flight-data"> Date 11/14/15, Price $340 </div></td></tr>
-              </table>
-            </td>
-            <td style="width:40%; vertical-align:top"> <!--dest types-->
-              <table class="dest-type-table">
-                <tr><td><div class="dest-type"> Beach </td></tr></div>
-                <tr><td><div class="dest-type"> Exploration </td></tr></div>
-                <tr><td><div class="dest-type"> Family </td></tr></div>
-              </table>
-            </td>
-          </tr>
-        </table>
-      </div>
+    <div class="item"> 
+      <table><tr>
+        <td style="width:40%"> <!--Flight info on left-->
+          <div class="origin-destination"> Boston (BOS) to New York City (JFK)</div>
+          <br>
+          <div class="dest-types"> Beach </div>
+          </table>
+          <div class="flight-cost"> Flights starting from $300 </div>
+          <br>
+          <div class="specifics" hidden>
+            <table class="flight-data-table">
+              <tr><td><div class="flight-data"> Date 11/10/15 11:37PM, Price $300 </div></td></tr>
+              <tr><td><div class="flight-data"> Date 11/14/15, Price $340 </div></td></tr>
+              <tr><td><div class="flight-data"> Date 11/10/15, Price $300 </div></td></tr>
+              <tr><td><div class="flight-data"> Date 11/14/15, Price $340 </div></td></tr>
+              <tr><td><div class="flight-data"> Date 11/10/15, Price $300 </div></td></tr>
+              <tr><td><div class="flight-data"> Date 11/14/15, Price $340 </div></td></tr>
+            </table>
+          </div>
+        </td>
+        <td style="width:60%"> <!--Info on right-->
+          <div class="carousel">
+            Hi I'm a carousel.
+          </div>
+        </td>
+      </tr></table>
     </div>
   </body>
 </html>

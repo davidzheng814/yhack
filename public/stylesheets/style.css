@@ -5,7 +5,7 @@
 
 body {
   margin: 0px;
-  background-color: #669999;
+  background-color: #CCAD5C;
 }
 
 .container{
@@ -143,26 +143,26 @@ input:-webkit-autofill {
 }
 
 .slideshow li:nth-child(1) span { 
-    background-image: url(../images/bg1.jpg);
+    background-image: url(../images/landing/bg1.jpg);
 }
 .slideshow li:nth-child(2) span { 
-    background-image: url(../images/bg2.jpg);
+    background-image: url(../images/landing/bg2.jpg);
     animation-delay: 6s; 
 }
 .slideshow li:nth-child(3) span { 
-    background-image: url(../images/bg3.jpg);
+    background-image: url(../images/landing/bg3.jpg);
     animation-delay: 12s; 
 }
 .slideshow li:nth-child(4) span { 
-    background-image: url(../images/bg4.jpg);
+    background-image: url(../images/landing/bg4.jpg);
     animation-delay: 18s; 
 }
 .slideshow li:nth-child(5) span { 
-    background-image: url(../images/bg5.jpg);
+    background-image: url(../images/landing/bg5.jpg);
     animation-delay: 24s; 
 }
 .slideshow li:nth-child(6) span { 
-    background-image: url(../images/bg6.jpg);
+    background-image: url(../images/landing/bg6.jpg);
     animation-delay: 30s; 
 }
 

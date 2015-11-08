@@ -39,13 +39,17 @@
             // $( "#from" ).datepicker( "option", "maxDate", selectedDate );
           }
         });
-        var searchStringTags = [
-          "hi",
-        ];
+        code_to_place = {'JFK': ['New York', 'United States'], 'PAP': ['Port Au Prince', 'Haiti'], 'BGI': ['Bridgetown', 'Barbados'], 'BOS': ['Boston', 'United States'], 'OAK': ['Oakland', 'United States'], 'NAS': ['Nassau', 'Bahamas'], 'LIR': ['Liberia', 'Costa Rica'], 'SJC': ['San Jose', 'United States'], 'BOG': ['Bogota', 'Colombia'], 'SXM': ['Saint Maarten', 'Netherlands'], 'DCA': ['Washington DC', 'United States'], 'LIM': ['Lima', 'Peru'], 'BWI': ['Baltimore', 'United States'], 'PIT': ['Pittsburgh', 'United States'], 'SAV': ['Savannah', 'United States'], 'JAX': ['Jacksonville', 'United States'], 'BQN': ['Aguadilla', 'Puerto Rico'], 'IAD': ['Washington DC', 'United States'], 'CHS': ['Charleston', 'United States'], 'PHL': ['Philadelphia', 'United States'], 'SFO': ['San Francisco', 'United States'], 'PHX': ['Phoenix', 'United States'], 'LAX': ['Los Angeles', 'United States'], 'KIN': ['Kingston', 'Jamaica'], 'LAS': ['Las Vegas', 'United States'], 'DEN': ['Denver', 'United States'], 'DTW': ['Detroit', 'United States'], 'SYR': ['Syracuse', 'United States'], 'BUR': ['Burbank', 'United States'], 'ROC': ['Rochester', 'United States'], 'BUF': ['Buffalo', 'United States'], 'UVF': ['St. Lucia', 'St. Lucia'], 'BDA': ['Hamilton', 'Bermuda'], 'BDL': ['Windsor Locks', 'United States'], 'GCM': ['Grand Cayman', 'Cayman Islands'], 'EWR': ['Newark', 'United States'], 'PBI': ['West Palm Beach', 'United States'], 'BTV': ['Burlington', 'United States'], 'RNO': ['Reno', 'United States'], 'ANC': ['Anchorage', 'United States'], 'LRM': ['La Romana', 'Dominican Republic'], 'PSE': ['Ponce', 'Puerto Rico'], 'RDU': ['Raleigh/Durham', 'United States'], 'ACK': ['Nantucket', 'United States'], 'CTG': ['Cartagena', 'Colombia'], 'SMF': ['Sacramento', 'United States'], 'MDE': ['Medellin', 'Colombia'], 'PVD': ['Providence', 'United States'], 'SEA': ['Seattle', 'United States'], 'AUA': ['Aruba', 'Aruba'], 'CUR': ['Curacao', 'Netherlands'], 'PDX': ['Portland', 'United States'], 'CLE': ['Cleveland', 'United States'], 'DFW': ['Fort Worth/Dallas', 'United States'], 'SJU': ['San Juan', 'Puerto Rico'], 'AUS': ['Austin', 'United States'], 'SRQ': ['Sarasota', 'United States'], 'SJO': ['San Jose', 'Costa Rica'], 'CLT': ['Charlotte', 'United States'], 'CUN': ['Cancun', 'Mexico'], 'PLS': ['Providenciales', 'Turks and Caicos Islands'], 'PUJ': ['Punta Cana', 'Dominican Republic'], 'RIC': ['Richmond', 'United States'], 'ORH': ['Worcester', 'United States'], 'ORD': ['Chicago', 'United States'], 'HYA': ['Hyannis', 'United States'], 'MSY': ['New Orleans', 'United States'], 'USAL': ['Fort Lauderdale', 'United States'], 'SWF': ['Stewart Field/Newburgh', 'United States'], 'GND': ['Grenada', 'Grenada'], 'AZS': ['Samana', 'Dominican Republic'], 'TPA': ['Tampa', 'United States'], 'MBJ': ['Montego Bay', 'Jamaica'], 'POS': ['Trinidad', 'Trinidad and Tobago'], 'POP': ['Puerto Plata', 'Dominican Republic'], 'MVY': ["Martha's Vineyard", 'United States'], 'STI': ['Santiago', 'Dominican Republic'], 'STT': ['St. Thomas Island', 'U.S. Virgin Islands'], 'ABQ': ['Albuquerque', 'United States'], 'HOU': ['Houston', 'United States'], 'HPN': ['Westchester County', 'United States'], 'STX': ['St. Croix Island', 'U.S. Virgin Islands'], 'SLC': ['Salt Lake City', 'United States'], 'MCO': ['Orlando', 'United States'], 'PWM': ['Portland', 'United States'], 'SDQ': ['Santo Domingo', 'Dominican Republic'], 'LGB': ['Long Beach', 'United States'], 'LGA': ['New York', 'United States'], 'RSW': ['Fort Myers', 'United States']};
 
-        var originTags = [
+        var searchStringTags = ['Beach', 'Exploration', 'Family', 'Nightlife', 'Romance', 'Caribbean Islands', 'Puerto Rico', 'Dominican Republic', 'Colombia', 'The South', 'Mountain West', 'Desert West', 'Pacific Northwest', 'Midwest', 'Gulf', 'Texas'];
 
-        ];
+        originTags = [ ];
+
+        for (var idx in code_to_place) {
+          originTags.push(code_to_place[idx][0] + ', ' + code_to_place[idx][1] + ' (' + idx + ')');
+          searchStringTags.push(code_to_place[idx][0] + ' (' + idx + ')');
+        }
+
         $( "#origin" ).autocomplete({
           source: originTags,
           autoFocus: true,
@@ -92,6 +96,7 @@
             }
           });
       });
+
       $(function() {
         $( "#slider-range-min" ).slider({
           range: "min",

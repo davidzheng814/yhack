@@ -5,7 +5,7 @@ from PIL import Image
 
 fetcher = urllib2.build_opener()
 searchUrl = "http://ajax.googleapis.com/ajax/services/search/images?v=1.0&"
-searchTerm = 'san francisco skyline wallpaper'
+searchTerm = 'point of interest anchorage '
 searchUrl += 'q='+'+'.join(searchTerm.split())+ '&'
 searchUrl += 'start=1' + '&'
 searchUrl += 'imgtype=photo&'

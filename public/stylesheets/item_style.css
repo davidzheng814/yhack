@@ -17,7 +17,7 @@ body {
   background-position: center top;
   padding: 30px;
   width: 80%;
-  color: #33334C;
+  color: white;
 }
 .item .origin-destination {
 	font-size: 25px;
@@ -50,8 +50,6 @@ body {
 }
 .landing {
   text-align: center;
-  height: 100%;
-  margin-bottom:50%;
 }
 
 #preload-01 { background: url('../images/loading.gif') no-repeat -9999px -9999px; }

@@ -60,7 +60,7 @@ window.onload = function() {
     }
 
     enableScroll();
-    $('html, body').animate(
+    $('html').animate(
       {
          //get top-position of target-element and set it as scroll target
          scrollTop: $('.loading').offset().top,

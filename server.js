@@ -96,6 +96,7 @@ module.exports = function(request, callback) {
   }
 
   renderFlights = function(groups, start, len) {
+    code_to_city = {'JFK': 'New York', 'PAP': 'Port Au Prince', 'BGI': 'Bridgetown', 'BOS': 'Boston', 'OAK': 'Oakland', 'NAS': 'Nassau', 'LIR': 'Liberia', 'SJC': 'San Jose', 'BOG': 'Bogota', 'SXM': 'Saint Maarten', 'DCA': 'Washington DC', 'LIM': 'Lima', 'BWI': 'Baltimore', 'PIT': 'Pittsburgh', 'SAV': 'Savannah', 'JAX': 'Jacksonville', 'BQN': 'Aguadilla', 'IAD': 'Washington DC', 'CHS': 'Charleston', 'PHL': 'Philadelphia', 'SFO': 'San Francisco', 'PHX': 'Phoenix', 'LAX': 'Los Angeles', 'KIN': 'Kingston', 'LAS': 'Las Vegas', 'FLL': 'Fort Lauderdale', 'DEN': 'Denver', 'DTW': 'Detroit', 'SYR': 'Syracuse', 'BUR': 'Burbank', 'ROC': 'Rochester', 'BUF': 'Buffalo', 'UVF': 'St. Lucia', 'BDA': 'Hamilton', 'BDL': 'Windsor Locks', 'GCM': 'Grand Cayman', 'EWR': 'Newark', 'PBI': 'West Palm Beach', 'BTV': 'Burlington', 'RNO': 'Reno', 'ANC': 'Anchorage', 'LRM': 'La Romana', 'PSE': 'Ponce', 'RDU': 'Raleigh/Durham', 'ACK': 'Nantucket', 'CTG': 'Cartagena', 'SMF': 'Sacramento', 'MDE': 'Medellin', 'PVD': 'Providence', 'SEA': 'Seattle', 'AUA': 'Aruba', 'CUR': 'Curacao', 'PDX': 'Portland', 'CLE': 'Cleveland', 'DFW': 'Fort Worth/Dallas', 'SJU': 'San Juan', 'AUS': 'Austin', 'SRQ': 'Sarasota', 'SJO': 'San Jose', 'CLT': 'Charlotte', 'CUN': 'Cancun', 'PLS': 'Providenciales', 'PUJ': 'Punta Cana', 'RIC': 'Richmond', 'ORH': 'Worcester', 'ORD': 'Chicago', 'HYA': 'Hyannis', 'MSY': 'New Orleans', 'SWF': 'Stewart Field/Newburgh', 'GND': 'Grenada', 'AZS': 'Samana', 'TPA': 'Tampa', 'MBJ': 'Montego Bay', 'POS': 'Trinidad', 'POP': 'Puerto Plata', 'MVY': "Martha's Vineyard", 'STI': 'Santiago', 'STT': 'St. Thomas Island', 'ABQ': 'Albuquerque', 'HOU': 'Houston', 'HPN': 'Westchester County', 'STX': 'St. Croix Island', 'SLC': 'Salt Lake City', 'MCO': 'Orlando', 'PWM': 'Portland', 'SDQ': 'Santo Domingo', 'LGB': 'Long Beach', 'LGA': 'New York', 'RSW': 'Fort Myers'}
     var idx = start;
     // ret is a temp. container; not actually rendered in the end
     var ret = $('<div>');
@@ -103,7 +104,7 @@ module.exports = function(request, callback) {
       var group = groups[idx]; // group: represents a bundle of flights with same FROM, DEST.
       rep_row = group[0]; // representative flight
       // var el = $("<div class='item'>");
-      $('.origin-destination').html(rep_row.Origin + " to " + rep_row.Destination);
+      $('.origin-destination').html(code_to_city[rep_row.Origin] + " (" + rep_row.Origin + ") to " + code_to_city[rep_row.Destination] + " (" + rep_row.Destination + ")");
       $('.flight-cost').html("Starting at $" + rep_row.DollarTotal.toString());
       var el = $('.item').clone();
       el.addClass('need-listener');

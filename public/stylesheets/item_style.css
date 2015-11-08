@@ -3,13 +3,18 @@ body {
 }
 
 .item {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-right: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
   font-family: Avenir Next;
   border-radius: 25px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #33334C;
   background-image: url("/images/vacation.jpg");
   background-size: cover;
+  background-position: center top;
   padding: 30px;
   width: 80%;
   color: #33334C;
@@ -19,7 +24,6 @@ body {
   font-family: Gill Sans;
 	margin: 10px;
   width: 65%;
-  float: left;
   height: 10px;
 }
 .item .flight-cost {
@@ -40,11 +44,9 @@ body {
 }
 .item .specifics .flight-data {
   margin: 10px;
-  float: left;
 }
 .item .specifics .dest-type {
   margin: 10px;
-  float: left;
 }
 .landing {
   text-align: center;

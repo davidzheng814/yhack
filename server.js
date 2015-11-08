@@ -173,6 +173,11 @@ module.exports = function(request, callback) {
       }
       $('.dest-types').html(dest_type);
 
+      var carousel = $('.carousel');
+      carousel.html('');
+      for (var i = 1; i <= 4; ++i)
+        carousel.append($('<div><img src="images/carousel_images/'+rep_row.Destination+i+'.jpg"/></div>'));
+
       var el = $('.item').clone();
       el.addClass('need-listener');
       ret.append(el);

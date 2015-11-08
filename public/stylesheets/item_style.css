@@ -13,12 +13,13 @@ body {
   border-width: 1px;
   border-color: #33334C;
   box-shadow: gray;
-  background-image: url("/images/vacation.jpg");
+  background-color: #7ec0ee;
   background-size: cover;
   background-position: center top;
   padding: 30px;
   width: 70%;
   color: #33334C;
+  position:relative;
 }
 .item .origin-destination {
 	font-size: 25px;
@@ -65,9 +66,6 @@ body {
 }
 .landing {
   text-align: center;
-}
-.item .carousel {
-  background-color: blue;
 }
 
 #preload-01 { background: url('../images/loading.gif') no-repeat -9999px -9999px; }

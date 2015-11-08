@@ -10,7 +10,31 @@ body {
 }
 
 .carousel {
-  
+  position: absolute;
+  height:225px;
+  width:420px;
+  left:500px;
+  top:22px;
+}
+
+.carousel-back {
+  position: absolute;
+  left:490px;
+  top:12px;
+  height:245px;
+  width:440px;
+  background-color:white;
+  border-radius:7px;
+  box-shadow:2px 2px 3px;
+}
+.carousel div {
+  height:225px;
+  width:420px;
+}
+
+.carousel img {
+  height: 225px;
+  width: 420px;
 }
 
 .container{
@@ -58,7 +82,7 @@ input:-webkit-autofill {
 .item {
   width: 100vw;
   min-height: 30vh;
-  clear: both;
+  clear: both;  
 }
 
 .landing{
@@ -94,6 +118,10 @@ input:-webkit-autofill {
   top: 0px;
   left: 0px;
   display: none;
+  z-index: 5;
+}
+.padding {
+  height: 40px;
 }
 
 .nav-bar:hover {

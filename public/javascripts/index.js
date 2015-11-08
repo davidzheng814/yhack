@@ -52,6 +52,13 @@ window.onload = function() {
     });
 
     addListeners = function() {
+      
+      $('.need-slick').slick({
+        autoplay:true,
+        arrows:false,
+      });
+      $('.need-slick').removeClass('need-slick');
+      console.log('slick worked');
       $(".need-listener").click(function() {
         $(".specifics", this).toggle("slow");
         // $(".dest-types", this).toggle("slow");
@@ -68,7 +75,7 @@ window.onload = function() {
     }
 
     enableScroll();
-    $('html').animate(
+    $('body').animate(
       {
          //get top-position of target-element and set it as scroll target
          scrollTop: $('.loading').offset().top,

@@ -89,6 +89,15 @@ input:-webkit-autofill {
   clear: both;  
 }
 
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .landing{
   text-align: center;
   height: 100vh;
@@ -115,7 +124,7 @@ input:-webkit-autofill {
 
 .nav-bar {
   height: 45px;
-  background-color: #9EC7C9;
+  background-color: #d3d3d3;
   opacity: 0.7;
   position: fixed;
   width: 100%;
@@ -123,6 +132,9 @@ input:-webkit-autofill {
   left: 0px;
   display: none;
   z-index: 5;
+  text-align:center;
+  vertical-align: middle;
+  cursor:pointer;
 }
 .padding {
   height: 40px;

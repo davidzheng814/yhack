@@ -11,7 +11,7 @@ window.onload = function() {
       };
   }
 
-  $('#back').click(function(){
+  $('.nav-bar').click(function(){
     $('body').animate(
       {
          //get top-position of target-element and set it as scroll target
@@ -115,7 +115,9 @@ window.onload = function() {
           });
           $('.loading').append(data);
 
-          $('.infinite-scroll').jscroll({callback: addListeners});
+          $('.infinite-scroll').jscroll({
+            padding: 400,
+            callback: addListeners});
           $('body').attr('style', 'padding-top: 45px');
           addListeners();
         });

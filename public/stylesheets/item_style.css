@@ -2,6 +2,13 @@ body {
   
 }
 
+.back-to-top {
+  margin-top: 13px;
+  font-family: Avenir Next;
+  font-weight:500;
+  color:#33334C;;
+}
+
 .item {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -21,6 +28,7 @@ body {
   width: 70%;
   color: #33334C;
   position:relative;
+  cursor:pointer;
 }
 .item .origin-destination {
 	font-size: 25px;

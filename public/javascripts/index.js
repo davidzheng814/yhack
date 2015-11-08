@@ -129,7 +129,7 @@ window.onload = function() {
           $('.loading').append(data);
 
           $('.infinite-scroll').jscroll({
-            padding: 400,
+            padding: 1200,
             callback: addListeners});
           $('body').attr('style', 'padding-top: 45px');
           addListeners();

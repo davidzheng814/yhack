@@ -47,7 +47,6 @@ window.onload = function() {
       'display':'block'
     });
 
-<<<<<<< bcbd50ea6f782a759fb83a7647e55605d26ec976
     addListeners = function() {
       $(".need-listener").click(function() {
         $(".specifics", this).toggle("slow");
@@ -55,16 +54,6 @@ window.onload = function() {
       });
       $(".need-listener").removeClass('need-listener');
     }
-=======
-      $('.infinite-scroll').jscroll({callback:function(el) {
-        console.log('added ', el);
-        $(".need-listener").click(function() {
-          console.log("clicked");
-          $(".specifics", this).toggle("slow");
-        });
-        $(".need-listener").removeClass('need-listener');
-      } });
->>>>>>> left flight info styling
 
     enableScroll();
     $('html, body').animate(

@@ -81,7 +81,7 @@
             },
             focus: function() {
               // prevent value inserted on focus
-              return false;
+              return true;
             },
             select: function( event, ui ) {
               var terms = split( this.value );
@@ -92,6 +92,7 @@
               // add placeholder to get the comma-and-space at the end
               terms.push( "" );
               this.value = terms.join( ", " );
+              $('#search-string').get(0).scrollLeft = $('#search-string').get(0).scrollWidth; 
               return false;
             }
           });

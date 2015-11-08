@@ -142,7 +142,15 @@
     </div>
     <section class='loading'>
       <nav class='nav-bar'>
-        I'm a nav bar
+        <form class="query-form" text-align='left'>
+          <input class="field" type="text" style="width:35%" name="search-string" placeholder="What are you looking for? e.g. Caribbean, nightlife"/>
+          <input class="field" autocomplete="off" type="text" style="width:10%" name="from" placeholder="Earliest Date"/>
+          <input class="field" autocomplete="off" type="text" style="width:10%" name="to" placeholder="Latest Date"/>
+          <input class="field" type="text" style="width:20%" name="origin" placeholder="Flying from" />
+          <span class="price-label">Price Range: $0 - $<span class="amount">37</span></span>
+          <span id="nav-slider-range-min" style="outline:none;width:20%;margin-top:5px"></span>
+          <button id="nav-submit" style="width:5%" class="button-blue" type="submit">Search</button>
+        </form>
       </nav>
       <div id='loading-div'>
         Wow, such loading.......

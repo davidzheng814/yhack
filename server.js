@@ -154,7 +154,7 @@ module.exports = function(request, callback) {
       rep_row = group[0]; // representative flight
       // var el = $("<div class='item'>");
       $('.origin-destination').html(code_to_city[rep_row.Origin] + " (" + rep_row.Origin + ") to " + code_to_city[rep_row.Destination] + " (" + rep_row.Destination + ")");
-      $('.flight-cost').html("Starting at $" + rep_row.DollarTotal.toString());
+      $('.flight-cost').html("Flights starting at $" + rep_row.DollarTotal.toString() + ":");
       $('.flight-data-table').html("");
       for (row of group) {
         dateString = new Date(row.FlightDate).toString().slice(0, 21);

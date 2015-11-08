@@ -28,6 +28,9 @@ body {
   height: 10px;
   /*text-shadow: 1px 1px #303049;*/
 }
+.item .origin-destination:hover {
+  font-size: 27px;
+}
 .item .flight-cost {
 	margin: 10px;
   font-size: 17px;
@@ -50,6 +53,9 @@ body {
 }
 .item .specifics .flight-data {
   margin: 5px;
+}
+.item .specifics .flight-data:hover {
+  font-size: 17px;
 }
 .landing {
   text-align: center;

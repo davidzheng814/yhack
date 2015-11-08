@@ -15,7 +15,7 @@ window.onload = function() {
     text_fields = ['search-string', 'from-date', 'to-date', 'origin'];
     var query_string = "";
     for (item of text_fields) {
-      var val = $('#'+item).val();
+      var val = $('#'+item, this).val();
       if (item == 'origin') {
         try {
           val = val.substring(val.indexOf('(') + 1, val.indexOf(')'));
@@ -66,6 +66,16 @@ window.onload = function() {
          scrollTop: $('.loading').offset().top,
 
       },700, "easeInCubic", function() {
+        search_string = $('#search-string').val();
+        from_date = $('#from-date').val();
+        to_date = $('#to-date').val();
+        origin = $('#origin').val();
+        amount = $('#amount').html();
+        console.log(search_string+' '+from_date+' '+to_date+' '+origin+' '+amount);
+
+        // put values into boxes
+
+
         $('.slideshow, .landing').remove();
         $('.nav-bar').css({
           'display':'block'
@@ -77,12 +87,10 @@ window.onload = function() {
           $('.loading').append(data);
 
           $('.infinite-scroll').jscroll({callback: addListeners});
+          $('body').attr('style', 'padding-top: 45px');
           addListeners();
         });
     });
-
-    
-
     return false;
   });
 };

@@ -112,7 +112,12 @@ module.exports = function(request, callback) {
     sql_query = "SELECT * FROM flights.data";
     if (constraints.length) {
       sql_query += " WHERE";
+      var first = 1;
       for (var constraint of constraints) {
+        if (!first) {
+          sql_query += " AND "
+        }
+        first = 0;
         sql_query += " (" + constraint + ")";
       }
     }

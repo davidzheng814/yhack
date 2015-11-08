@@ -77,19 +77,48 @@ var prev_result;
 // assign each query an id (current cnt)
 var cnt = 0;
 
+function isEmpty(dict){
+   for(var i in dict){ 
+     return false;
+   }
+  return true;
+}
+
 module.exports = function(request, callback) {
   var url_parts = url.parse(request.url, true);
   var query = url_parts.query; // json file {'param':value}
   var status = query['status'];
-  var search_string = query['search_string'];
+  var search_string = (query['search-string'] || '').toLowerCase();
 
   var sql_query;
   if (status == 'next') {
     sql_query = sql_queries[query.id];
   } else {
-    // TODO: modify this to sort by a relevancy/preference metric
-    sql_query = "SELECT * FROM flights.data WHERE origin = '" + query.origin + "'";
+    constraints = [];
+    if (query.origin != "") {
+      constraints.push("origin='" + query.origin + "'");
+    }
+    if (query['from-date'] != "") {
+      constraints.push("str_to_date(FlightDate, '%m/%d/%Y %H:%i') >= " + query['from-date']);
+    }
+    if (query['to-date'] != "") {
+      constraints.push("str_to_date(FlightDate, '%m/%d/%Y %H:%i') <= " + query['to-date']);
+    }
+
+    if (query['max-price'] != "") {
+      constraints.push("DollarTotal <= " + query['max-price']);
+    }
+
+    sql_query = "SELECT * FROM flights.data";
+    if (constraints.length) {
+      sql_query += " WHERE";
+      for (var constraint of constraints) {
+        sql_query += " (" + constraint + ")";
+      }
+    }
   }
+
+  print(sql_query);
   var start = 0;
   if (status == 'next') {
     start = parseInt(query.start);
@@ -171,7 +200,17 @@ module.exports = function(request, callback) {
         }
         groups.push(group);
       }
-      console.log(groups);
+
+      groups.sort( function(a, b) {
+        var x = a[0];
+        var y = b[0];
+
+        return x.DollarTotal - y.DollarTotal;
+      });
+
+      for (var group of groups) {
+        console.log(group[0].Origin, group[0].Destination, group[0].DollarTotal);
+      }
 
       // TODO: concurrency = lol
       prev_query = sql_query;

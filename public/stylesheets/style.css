@@ -13,13 +13,13 @@ body {
   position: absolute;
   height:225px;
   width:420px;
-  left:500px;
+  right:22px;
   top:22px;
 }
 
 .carousel-back {
   position: absolute;
-  left:490px;
+  right:12px;
   top:12px;
   height:245px;
   width:440px;
@@ -27,6 +27,7 @@ body {
   border-radius:7px;
   box-shadow:2px 2px 3px;
 }
+
 .carousel div {
   height:225px;
   width:420px;
@@ -81,7 +82,7 @@ input:-webkit-autofill {
 
 .item {
   width: 100vw;
-  min-height: 30vh;
+  min-height: 210px;
   clear: both;  
 }
 

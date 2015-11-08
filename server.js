@@ -99,10 +99,10 @@ module.exports = function(request, callback) {
       constraints.push("origin='" + query.origin + "'");
     }
     if (query['from-date'] != "") {
-      constraints.push("str_to_date(FlightDate, '%m/%d/%Y %H:%i') >= " + query['from-date']);
+      constraints.push("str_to_date(FlightDate, '%m/%d/%Y %H:%i') >= str_to_date('" + query['from-date']+"', '%m/%d/%Y')");
     }
     if (query['to-date'] != "") {
-      constraints.push("str_to_date(FlightDate, '%m/%d/%Y %H:%i') <= " + query['to-date']);
+      constraints.push("str_to_date(FlightDate, '%m/%d/%Y %H:%i') <= str_to_date('" + query['to-date']+"', '%m/%d/%Y')");
     }
 
     if (query['max-price'] != "") {

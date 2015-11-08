@@ -54,6 +54,12 @@ body {
 .item .specifics .flight-data {
   margin: 5px;
 }
+.show {
+  opacity: 1;
+}
+.hide {
+  opacity: 0;
+}
 .item .specifics .flight-data:hover {
   font-size: 17px;
 }

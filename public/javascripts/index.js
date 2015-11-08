@@ -55,6 +55,14 @@ window.onload = function() {
       $(".need-listener").click(function() {
         $(".specifics", this).toggle("slow");
         // $(".dest-types", this).toggle("slow");
+        var fd = $(".flight-data", this);
+        if (!fd.hasClass("show")) {
+          setTimeout(function () {fd.removeClass("hide"); 
+                                  fd.addClass("show")}, 650);
+        } else {
+          fd.addClass("hide");
+          fd.removeClass("show");
+        }
       });
       $(".need-listener").removeClass('need-listener');
     }

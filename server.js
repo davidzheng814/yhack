@@ -44,7 +44,7 @@ var url = require('url');
 var mysql = require('mysql');
 var connection = mysql.createConnection({
   // host     : 'localhost', // david's ip: 172.26.10.202
-  host     : '172.26.10.202',
+  host     : '10.160.4.251',
   user     : 'root',
   password : '' // TODO: make this read from config
 });
@@ -158,7 +158,7 @@ module.exports = function(request, callback) {
       $('.flight-data-table').html("");
       for (row of group) {
         dateString = new Date(row.FlightDate).toString().slice(0, 21);
-        var flightDiv = $("<div class='flight-data'>").append('&bull; ' + dateString + ', $' + row.DollarTotal);
+        var flightDiv = $("<div class='flight-data hide'>").append('&bull; ' + dateString + ', $' + row.DollarTotal);
         $('.flight-data-table').append($('<tr>').append($('<td>').append(flightDiv)));
       }
       $('.dest-types').html("");

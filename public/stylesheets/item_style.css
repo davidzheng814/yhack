@@ -16,6 +16,7 @@ body {
   background-color: #7ec0ee;
   background-size: cover;
   background-position: center top;
+  opacity: .8;
   padding: 30px;
   width: 70%;
   color: #33334C;

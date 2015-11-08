@@ -1,3 +1,22 @@
+var atTop = true;
+function backToTop(){
+  if(atTop)
+    return;
+  atTop = true;
+  $('body').animate(
+    {
+       //get top-position of target-element and set it as scroll target
+       scrollTop: $('.landing').offset().top,
+  },400, function() {
+    disableScroll();
+    $('.results').remove();
+  });
+  $('.nav-bar').css({
+      'display':'none'
+  });
+  window.onscroll = function () {};
+};
+
 window.onload = function() {
   window.scrollTo(0, 0);
   disableScroll();
@@ -11,19 +30,7 @@ window.onload = function() {
       };
   }
 
-  $('.nav-bar').click(function(){
-    $('body').animate(
-      {
-         //get top-position of target-element and set it as scroll target
-         scrollTop: $('.landing').offset().top,
-    },400, function() {
-      disableScroll();
-      $('.results').remove();
-    });
-    $('.nav-bar').css({
-        'display':'none'
-    });
-  });
+  $('.nav-bar').click(backToTop);
 
   $('.query-form').on('submit', function () {
     text_fields = ['search-string', 'from-date', 'to-date', 'origin'];
@@ -88,6 +95,7 @@ window.onload = function() {
       $(".need-listener").removeClass('need-listener');
     }
 
+    atTop = false;
     enableScroll();
     $('body').animate(
       {
@@ -109,6 +117,11 @@ window.onload = function() {
         $('.nav-bar').css({
           'display':'block'
         });
+        window.onscroll = function () {
+          if(!atTop && document.body.scrollTop < 3*window.innerHeight/4) {
+            backToTop();
+          }
+        }
         $.get('/query?'+query_string, function(data) {
           $('#loading-div').css({
             'display':'none'

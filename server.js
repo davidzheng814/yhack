@@ -44,7 +44,7 @@ var url = require('url');
 var mysql = require('mysql');
 var connection = mysql.createConnection({
   // host     : 'localhost', // david's ip: 172.26.10.202
-  host     : '10.160.4.251',
+  host     : '172.26.10.202',
   user     : 'root',
   password : '' // TODO: make this read from config
 });

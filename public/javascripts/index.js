@@ -11,6 +11,20 @@ window.onload = function() {
       };
   }
 
+  $('#back').click(function(){
+    $('body').animate(
+      {
+         //get top-position of target-element and set it as scroll target
+         scrollTop: $('.landing').offset().top,
+    },400, function() {
+      disableScroll();
+      $('.results').remove();
+    });
+    $('.nav-bar').css({
+        'display':'none'
+    });
+  });
+
   $('.query-form').on('submit', function () {
     text_fields = ['search-string', 'from-date', 'to-date', 'origin'];
     var query_string = "";
@@ -81,17 +95,17 @@ window.onload = function() {
          scrollTop: $('.loading').offset().top,
 
       },700, "easeInCubic", function() {
-        search_string = $('#search-string').val();
-        from_date = $('#from-date').val();
-        to_date = $('#to-date').val();
-        origin = $('#origin').val();
-        amount = $('#amount').html();
-        console.log(search_string+' '+from_date+' '+to_date+' '+origin+' '+amount);
+        // search_string = $('#search-string').val();
+        // from_date = $('#from-date').val();
+        // to_date = $('#to-date').val();
+        // origin = $('#origin').val();
+        // amount = $('#amount').html();
+        // console.log(search_string+' '+from_date+' '+to_date+' '+origin+' '+amount);
 
         // put values into boxes
 
 
-        $('.slideshow, .landing').remove();
+        // $('.slideshow, .landing').remove();
         $('.nav-bar').css({
           'display':'block'
         });

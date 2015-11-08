@@ -46,7 +46,7 @@ body {
 }
 
 
-.field {
+.query-container .field {
   line-height: 2.3;
   font-size:16px;
   padding:0px;

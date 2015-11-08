@@ -17,7 +17,11 @@ window.onload = function() {
     for (item of text_fields) {
       var val = $('#'+item).val();
       if (item == 'origin') {
-        val = val.substring(val.indexOf('(') + 1, val.indexOf(')'));
+        try {
+          val = val.substring(val.indexOf('(') + 1, val.indexOf(')'));
+        } catch (e) {
+          // val not formatted from auto-complete
+        }
       }else if (item == 'search-string') {
         var tokens = val.split(',');
         val = "";

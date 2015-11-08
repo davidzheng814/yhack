@@ -50,7 +50,7 @@ var connection = mysql.createConnection({
 });
 
 try {
-connection.connect();
+  connection.connect();
 // connection.end();
 } catch(e) {
   print('cannot connect to server');
@@ -124,6 +124,20 @@ module.exports = function(request, callback) {
   }
 
   print(sql_query);
+  preferences = [];
+  for (var pref of search_string.split(',')) {
+    var a = pref.split('-')[0], b = parseInt(pref.split('-')[1]);
+    if (a == '1') {
+      preferences.push(['Type' + b, 1]);
+    } else if (a == '2') {
+      preferences.push(['GeographicRegionId', b]);
+    } else if (a == '3') {
+      preferences.push(['MarketID', b]);
+    } else if (a == 'domestic') {
+      preferences.push(['IsDomesticRoute', 1]);      
+    }
+  }
+
   var start = 0;
   if (status == 'next') {
     start = parseInt(query.start);
@@ -182,7 +196,7 @@ module.exports = function(request, callback) {
     // TODO: if idx == rows.length, return 'no more flights' aka infinite scroll -> finite page
   }
 
-  if (prev_query == sql_query) {
+  if (query.id == cnt) {
     callback(renderFlights(prev_result, start, len));
   } else {
     connection.query(sql_query, function(err, rows, fields) {
@@ -212,9 +226,17 @@ module.exports = function(request, callback) {
         groups.push(group);
       }
 
+      print ('sorting by', preferences);
       groups.sort( function(a, b) {
         var x = a[0];
         var y = b[0];
+        for (var prefL of preferences) {
+          var col = prefL[0], val = prefL[1];
+          var am = x[col] == val, bm = y[col] == val;
+          if (am != bm) {
+            return bm - am;
+          }
+        }
 
         return x.DollarTotal - y.DollarTotal;
       });
@@ -225,6 +247,7 @@ module.exports = function(request, callback) {
 
       // TODO: concurrency = lol
       prev_query = sql_query;
+      prev_preferences = search_string;
       prev_result = groups;
 
       callback(renderFlights(prev_result, start, len));

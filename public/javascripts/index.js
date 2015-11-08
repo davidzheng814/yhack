@@ -1,7 +1,7 @@
 window.onload = function() {
   window.scrollTo(0, 0);
   disableScroll();
-  var searchStringTags = {'beach':'1-1', 'exploration':'1-2', 'family':'1-3', 'nightlife':'1-4', 'romance':'1-5', 'caribbean islands':'2-3', 'puerto rico':'2-4', 'dominican republic':'2-5', 'colombia':'2-6', 'the south':'2-8', 'mountain west':'2-9', 'desert west':'2-10', 'pacific northwest':'2-11', 'midwest':'2-15', 'gulf':'2-19', 'texas':'2-20'};
+  var searchStringTags = {'domestic':'domestic', 'california':'3-1', 'caribbean':'3-2', 'mid-atlantic':'3-3', 'mountain/desert':'3-4','northeast':'3-5', 'south/southwest':'3-6','beach':'1-1', 'exploration':'1-2', 'family':'1-3', 'nightlife':'1-4', 'romance':'1-5', 'other caribbean islands':'2-3', 'puerto rico':'2-4', 'dominican republic':'2-5', 'colombia':'2-6', 'the south':'2-8', 'mountain west':'2-9', 'desert west':'2-10', 'pacific northwest':'2-11', 'midwest':'2-15', 'gulf':'2-19', 'texas':'2-20'};
 
   if(typeof(String.prototype.trim) === "undefined")
   {
@@ -63,6 +63,9 @@ window.onload = function() {
 
       },700, "easeInCubic", function() {
         $('.slideshow, .landing').remove();
+        $('.nav-bar').css({
+          'display':'block'
+        });
         $.get('/query?'+query_string, function(data) {
           $('#loading-div').css({
             'display':'none'

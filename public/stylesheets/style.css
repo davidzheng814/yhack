@@ -8,6 +8,10 @@ body {
   background-color: #CCAD5C;
 }
 
+.carousel {
+  
+}
+
 .container{
   z-index: 1;
 }
@@ -84,7 +88,11 @@ input:-webkit-autofill {
   text-align: right;
   height: 40px;
   background-color: red;
-  display: absolute;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  display: none;
 }
 
 .price-label {

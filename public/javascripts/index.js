@@ -47,6 +47,14 @@ window.onload = function() {
       'display':'block'
     });
 
+    addListeners = function() {
+      $(".need-listener").click(function() {
+        $(".specifics", this).toggle("slow");
+        // $(".dest-types", this).toggle("slow");
+      });
+      $(".need-listener").removeClass('need-listener');
+    }
+
     enableScroll();
     $('html, body').animate(
       {
@@ -61,15 +69,8 @@ window.onload = function() {
           });
           $('.loading').append(data);
 
-          $('.infinite-scroll').jscroll({callback:function(el) {
-            console.log('added ', el);
-            $(".need-listener").click(function() {
-              console.log("clicked");
-              $(".specifics", this).toggle("slow");
-              $(".dest-types", this).toggle("slow");
-            });
-            $(".need-listener").removeClass('need-listener');
-          }});
+          $('.infinite-scroll').jscroll({callback: addListeners});
+          addListeners();
         });
     });
 

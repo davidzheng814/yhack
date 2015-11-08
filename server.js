@@ -143,7 +143,8 @@ module.exports = function(request, callback) {
       $('.flight-cost').html("Starting at $" + rep_row.DollarTotal.toString());
       $('.flight-data-table').html("");
       for (row of group) {
-        var flightDiv = $("<div class='flight-data'>").append('&bull; ' + row.FlightDate + ', $' + row.DollarTotal);
+        dateString = new Date(row.FlightDate).toString().slice(0, 21);
+        var flightDiv = $("<div class='flight-data'>").append('&bull; ' + dateString + ', $' + row.DollarTotal);
         $('.flight-data-table').append($('<tr>').append($('<td>').append(flightDiv)));
       }
       $('.dest-types').html("");
